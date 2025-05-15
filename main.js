@@ -34,10 +34,12 @@ function SetupStream(stream) {
         chunks.push(e.data);
     }
     recorder.onstop = e => {
-        const blob = new Blob(chunks, {type: "audio/ogg; codecs=opus"});
+        const blob = new Blob(chunks, {type: "audio/wav; codecs=opus"});
         chunks = [];
         const audioURL = window.URL.createObjectURL(blob);
         playback.src = audioURL;
+        playback.loop = true;
+        playback.play();
     }
 
     can_record = true;
