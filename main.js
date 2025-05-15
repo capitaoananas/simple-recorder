@@ -52,8 +52,10 @@ function ToggleMic() {
     is_recording = !is_recording;
 
     if (is_recording) {
-        recorder.start();
-        mic_btn.classList.add("is-recording");
+        setTimeout(() => {
+            recorder.start();
+            mic_btn.classList.add("is-recording");
+        }, 150);
     } else {
         recorder.stop();
         mic_btn.classList.remove("is-recording");
